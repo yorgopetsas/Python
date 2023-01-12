@@ -1,4 +1,3 @@
-# CURRENTLY on Min 24 -> https://www.youtube.com/watch?v=RRYgc4YIhEs
 import pygame
 import random
 from multiprocessing import Queue
@@ -62,7 +61,7 @@ def create_mine_field(rows, cols, mines):
 		field[row][col] = -1
 		
 	for mine in mine_positions:
-		neighbors= get_neighbors(*mine, rows, cols) #astrix mine to decompose - what does it mean?
+		neighbors= get_neighbors(*mine, rows, cols)
 		for r, c in neighbors:
 			field[r][c] += 1
 	
@@ -81,16 +80,16 @@ def draw(win, field, cover_field):
 			
 			if is_flag == -2:
 				pygame.draw.rect(win, FLAG_RECT_COLOR, (x, y, SIZE, SIZE))
-				pygame.draw.rect(win, "black", (x, y, SIZE, SIZE), 2) #Thinkness of 2
+				pygame.draw.rect(win, "black", (x, y, SIZE, SIZE), 2)
 				continue
 			
 			if is_covered:
 				pygame.draw.rect(win, RECT_COLOR, (x, y, SIZE, SIZE))
-				pygame.draw.rect(win, "black", (x, y, SIZE, SIZE), 2) #Thinkness of 2
+				pygame.draw.rect(win, "black", (x, y, SIZE, SIZE), 2)
 				continue
 			else:
 				pygame.draw.rect(win, CLICKED_RECT_COLOR, (x, y, SIZE, SIZE))
-				pygame.draw.rect(win, "black", (x, y, SIZE, SIZE), 2) #Thinkness of 2
+				pygame.draw.rect(win, "black", (x, y, SIZE, SIZE), 2)
 						
 			if value > 0:	
 				text = NUM_FONT.render(str(value), 1, NUM_COLORS[value])
@@ -152,8 +151,6 @@ def main(win):
 						cover_field[row][col] = 0
 						flags += 1
 					else:
-# 						flag_positions.remove((row, col))
-# 					flag_positions.add((row, col))
 						flags -= 1
 						cover_field[row][col] = -2
  					
@@ -163,3 +160,7 @@ def main(win):
 
 if __name__ == "__main__":
 	main(win)
+	
+# In "neighbors= get_neighbors(*mine, rows, cols)" what does the * astrix do - decompose (mine?) - what does it mean?
+# In "pygame.draw.rect(win, "black", (x, y, SIZE, SIZE), 2)" The last 2 sets the thinkness
+# Needed to import from multiprocessing import Queue not Queue
