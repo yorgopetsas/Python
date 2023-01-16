@@ -1,7 +1,15 @@
 The idea of this project is to create a website using the Flask Framework 
-as fast as possible. The project was started @Jan 16, 8:44 and ended at
+as fast as possible. The project was started @Jan 16, 8:44 and ended at 11:40
 
-I will share some of the knowledge I gain while doing this project 
+The result is published as life website on the following URL:
+
+http://cv.amanitasolutions.com
+
+##It consist of the following stages:
+
+I. Website Creation and Setup with Flask
+
+###I will share some of the knowledge I gain while doing this project 
 
 ```
 # Below you can see how you can take a paramenter from the URL
@@ -12,7 +20,7 @@ def profile(username):
 ```
 
 
-Next I will show you how to # Pass query from URL using request from FLASK
+###Next I will show you how to # Pass query from URL using request from FLASK
 ```
 @views.route("/profile")
 def profile():
@@ -21,14 +29,14 @@ def profile():
 	return render_template("index.html", name=name)
 ```
 	
-Return JSON. Use jsonify will convert a dictionary to JSON
+###Return JSON. Use jsonify will convert a dictionary to JSON
 ```
 @views.route("/json")
 def get_json():
 	return jsonify({'name': 'yorgo', 'age', 24})  
 ```
 
-How to Redirect: Import redirect and url_for and use the below logic
+###How to Redirect: Import redirect and url_for and use the below logic
 ```
 @views.route("/go-to-home")
 def go_to_home():
@@ -37,7 +45,7 @@ def go_to_home():
 
 
 
-In order to add JavaScript navigate to your HTML template file and use the following command
+###In order to add JavaScript navigate to your HTML template file and use the following command
 ```
 <script type="text/javascript" src="{{ url_for('static', filename='index.js')}}"></script>
 ```
@@ -51,3 +59,9 @@ and element we want to update. In this case we will update the H1 tag:
 <h1>This is the profile page</h1>
 {% endblock %}
 ```
+
+II. Setup of the environment in my hosting account through CPanel. 
+
+- Install the app
+- Configure a subdomain on the CPanal in through cloudflare
+- Install Flask 
