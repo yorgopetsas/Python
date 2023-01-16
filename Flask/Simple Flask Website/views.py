@@ -44,4 +44,4 @@ def LinkedIn():
 	
 @views.route("/portfolio")
 def portfolio():
-	return render_template("index.html", name ="Yorgo Petsas")
+	return render_template("portfolio.html", name ="Yorgo Petsas")
