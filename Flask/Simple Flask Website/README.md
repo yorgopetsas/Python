@@ -1,6 +1,8 @@
 The idea of this project is to create a website using the Flask Framework 
 as fast as possible. The project was started @Jan 16, 8:44 and ended at 11:40
 
+UPDATE: I spent a few more hours to add navigation and some real personal content
+
 The result is published as life website on the following URL:
 
 http://cv.amanitasolutions.com
@@ -45,7 +47,7 @@ def go_to_home():
 
 
 
-###In order to add JavaScript navigate to your HTML template file and use the following command
+###In order to add JavaScript navigate to your HTML template file use the following command
 ```
 <script type="text/javascript" src="{{ url_for('static', filename='index.js')}}"></script>
 ```
