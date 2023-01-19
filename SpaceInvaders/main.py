@@ -1,4 +1,3 @@
-# The player can how win the game if he reaches X level
 import pygame
 import os
 import time
@@ -278,14 +277,14 @@ def main_menu():
 	run = True
 	while run:
 		WIN.blit(BG, (0,0))
-		title_label = title_font.render("Press mouse button to start", 1, (255,255,255))
+		title_label = title_font.render("Press any key to start", 1, (255,255,255))
 		WIN.blit(title_label, (WIDTH / 2 - title_label.get_width() / 2, 350))
 
 		pygame.display.update()
 		for event in pygame.event.get():
 			if event.type == pygame.QUIT:
 				run = False
-			if event.type == pygame.MOUSEBUTTONDOWN:
+			if event.type == pygame.KEYDOWN:
 				main()
 
 	pygame.quit()	
