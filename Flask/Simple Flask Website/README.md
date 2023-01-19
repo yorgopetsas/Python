@@ -15,19 +15,22 @@ II. Views.py: Setup of the URL rules the templates and the content.
 
 On each page of this site I have tried to represent different functionalities and short explanation on how to set them up in Flask
 
-1. Home: Here we setup a basic template with navigation after creating the app, import the following libraries <i>Blueprint</i>, <i>render_template</i>, <i>request</i>, <i>jsonify</i>, <i>redirect</i>, <i>url_for</i> and setup the @views
+1. <b>Home</b>: Here we setup a basic template with navigation after creating the app, import the following libraries <i>Blueprint</i>, <i>render_template</i>, <i>request</i>, <i>jsonify</i>, <i>redirect</i>, <i>url_for</i> and setup the @views
 
-2. Profile: On this page you can see how we can pass parameter queries thought the URL, using the <i>request</i> library which will dinamically use them to filter and display data. To do the test you simply need to simply add a question mark "?" followed by the parameter name, followed by "=" and the value. Before any next parameter simply add the "&" charecter.
+2. <b>Profile</b>: On this page you can see how we can pass parameter queries thought the URL, using the <i>request</i> library which will dinamically use them to filter and display data. To do the test you simply need to simply add a question mark "?" followed by the parameter name, followed by "=" and the value. Before any next parameter simply add the "&" charecter.
 
-using the <i>request</i> library from FLASK</h3>
+Parameters:
 
 ```
-Parameters:
 name=NAME
 age=AGE
 nationality=NATIONALITY
+```
+
 Example:
-/profile?name=john&age=dough&nationality=usa
+
+```
+/profile?<b>name=john&age=dough&nationality=usa</b>
 
 ```
 
@@ -49,7 +52,7 @@ def profile():
      return render_template("profile.html", name=name, age=age, nationality=nationality)
 ```
 
-3. LinkedIn: This page we show you how we inherit the template used in the home page, we overwrite the content block while leaving everything else untouched. Flask uses the Jijna to manage templates and the way to configure it to start the new templates with the following tag:
+3. <b>LinkedIn</b>: This page we show you how we inherit the template used in the home page, we overwrite the content block while leaving everything else untouched. Flask uses the Jijna to manage templates and the way to configure it to start the new templates with the following tag:
 
 
 ```
@@ -67,9 +70,9 @@ And we then add the things we want to overwrite. In the example below we update 
 
 Additionally you can see an alternative way to embbed some of my IT related posts in my LinkedIn profile. 
 
-4. CV: On this page I have embedded my CV through <i>iframe</i> HTML tag.
+4. <b>CV</b>: On this page I have embedded my CV through <i>iframe</i> HTML tag.
 
-5. Go To Home: Redirects are important part of any big and dynamic website, here you can see some basic redirections with Flask. We use the <i>redirect</i> and <i>url_for</i> libraries and set it up as follows:
+5. <b>Go To Home</b>: Redirects are important part of any big and dynamic website, here you can see some basic redirections with Flask. We use the <i>redirect</i> and <i>url_for</i> libraries and set it up as follows:
 
 ```
     @views.route("/go-to-home")
@@ -77,12 +80,12 @@ Additionally you can see an alternative way to embbed some of my IT related post
         return redirect(url_for("views.home"))
 ```
 
-6. JSON: This page will show the posibility to convert dictionary to JSON data and display it. You need to use the <i>jsonify</i> library which will convert a dictionary to JSON. Views.py setup below:
+6. <b>JSON</b>: This page will show the posibility to convert dictionary to JSON data and display it. You need to use the <i>jsonify</i> library which will convert a dictionary to JSON. Views.py setup below:
 
 ```
-@views.route("/json")
-def get_json(): 
-	return jsonify({'1_' : 'DESCRIPTION: This page will show how to convert dictionary to JSON data.', '2_' : '-', '3_' : 'DETAILS: The configuration is done in the views system of Flask were we need to import the  _jsonify_ library. Then we define a route and a get_json function.', '4_': '-', '5_': 'MORE DETAILS: The data is sent as dictionary, converted and dinamically visualized with a URL rule in the views.py file.', '6_' : '', '7_' : 'EXAMPLE:','_1' : '      @views.route("/json")', '_2' : '          def get_json():', '_3' : '          return jsonify(JSON_DICTIONARY)','_4':'', '_ZX' : '<BACK>  PLEASE HIT THE BACK BUTTON OF YOUR BROWSER SO YOU CAN GO BACK TO THE WEBSITE  <BACK>'})
+	@views.route("/json")
+	def get_json(): 
+		return jsonify({'1_' : 'DESCRIPTION: This page will show how to convert dictionary to JSON data.', '2_' : '-', '3_' : 'DETAILS: The configuration is done in the views system of Flask were we need to import the  _jsonify_ library. Then we define a route and a get_json function.', '4_': '-', '5_': 'MORE DETAILS: The data is sent as dictionary, converted and dinamically visualized with a URL rule in the views.py file.', '6_' : '', '7_' : 'EXAMPLE:','_1' : '      @views.route("/json")', '_2' : '          def get_json():', '_3' : '          return jsonify(JSON_DICTIONARY)','_4':'', '_ZX' : '<BACK>  PLEASE HIT THE BACK BUTTON OF YOUR BROWSER SO YOU CAN GO BACK TO THE WEBSITE  <BACK>'})
 
 ```
 
