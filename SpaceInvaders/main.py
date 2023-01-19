@@ -1,4 +1,4 @@
-# Improved enemy generation quantity ratio and location randomizer
+# The player can how win the game if he reaches X level
 import pygame
 import os
 import time
@@ -151,6 +151,7 @@ def main():
 	
 	level = 0
 	lives = 1
+	game_over = 9
 	
 	main_font = pygame.font.SysFont("comicsans", 40)
 	lost_font = pygame.font.SysFont("comicsans", 30)
@@ -190,6 +191,7 @@ def main():
 		pygame.display.update()
 
 	while run:
+	
 		clock.tick(FPS)
 		redraw_window()
 
@@ -214,8 +216,14 @@ def main():
 # 			else:
 # 				continue
 
-		if len(enemies) == 0:	
+		if len(enemies) == 0:
 			if level != 0:
+				if level >= game_over:
+					lost_label = lost_font.render("You Win!!", 1, (255, 255, 255))
+					WIN.blit(lost_label, (WIDTH / 2 - lost_label.get_width()/2, 350))
+					pygame.display.update()	
+					time.sleep(3)
+					main_menu()
 				next_round = main_font.render(f"Congrats", 1, (255, 255, 255))
 				next_round2 = main_font.render(f"You passed Level: {level}", 1, (255, 255, 255))
 				WIN.blit(next_round, (100, 350))
@@ -270,7 +278,7 @@ def main_menu():
 	run = True
 	while run:
 		WIN.blit(BG, (0,0))
-		title_label = title_font.render("Press any mouse button to begin ...", 1, (255,255,255))
+		title_label = title_font.render("Press mouse button to start", 1, (255,255,255))
 		WIN.blit(title_label, (WIDTH / 2 - title_label.get_width() / 2, 350))
 
 		pygame.display.update()
