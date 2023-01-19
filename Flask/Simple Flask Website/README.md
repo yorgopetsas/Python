@@ -1,3 +1,4 @@
+<h1>Simple Flask Website</h1>
 The idea of this project is to create a website using Flask as fast as possible. 
 The project was started @Jan 16, 8:44 and ended at 11:40
 
