@@ -1,3 +1,4 @@
+# Improved enemy generation quantity ratio and location randomizer
 import pygame
 import os
 import time
@@ -152,10 +153,10 @@ def main():
 	lives = 1
 	
 	main_font = pygame.font.SysFont("comicsans", 40)
-	lost_font = pygame.font.SysFont("comicsans", 60)
+	lost_font = pygame.font.SysFont("comicsans", 30)
 
 	enemies = []
-	wave_length =  5
+	wave_length =  4
 	enemy_vel = 1
 
 	player_vel = 5
@@ -224,10 +225,10 @@ def main():
 				pygame.time.delay(3000)
 				
 			level += 1
-			wave_length += 5
+			wave_length += 3
 
 			for i in range(wave_length):
-				enemy = Enemy(random.randrange(50, WIDTH - 100), random.randrange(-150, -100),
+				enemy = Enemy(random.randrange(50, WIDTH - 50), random.randrange(-800, -50),
 				random.choice(["red", "blue", "green"]))
 				enemies.append(enemy)
 
