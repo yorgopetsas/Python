@@ -5,7 +5,7 @@ as fast as possible. The project was started @Jan 16, 8:44 and ended at 11:40
 
 The result is published as life website on the following URL:
 
-http://cv.amanitasolutions.com
+https://cv.amanitasolutions.com
 
 ##It consist of the following stages:
 
