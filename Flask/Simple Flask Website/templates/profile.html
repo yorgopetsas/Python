@@ -1,4 +1,77 @@
 {% extends "index.html" %}
 {% block content %}
-<h1>This is the profile page</h1>
+<h1>Profile Page: </h1><h2>Here you can see how to pass parameter queries with the URL, and dinamically create pages and display the data.</h2>
+
+<div style="padding: 20px;min-width:600px;border:1px solid black;">
+<table style="padding-bottom: 30px;">
+<thead>
+<tr>
+    <td>
+		<h3 style="text-align:center;">USER MODULE</h3>
+    </td>
+    </td>
+ </tr>
+ <tr>
+    <td>
+    <span style="font-size:25px;">Name:</span>
+    </td>
+    <td>
+    <span style="font-size:25px;padding-left:40px;"><b>{{name}}</b></span>
+    </td>
+ </tr>
+  <tr>
+    <td>
+    <span style="font-size:25px;">Age:</span>
+    </td>
+    <td>
+    <span style="font-size:25px;padding-left:40px;"><b>{{age}}</b></span>
+    </td>
+ </tr>
+  <tr>
+    <td>
+    <span style="font-size:25px;">Nationality:</span>
+    </td>
+    <td>
+    <span style="font-size:25px;padding-left:40px;"><b>{{nationality}}</b></span>
+    </td>
+ </tr>
+</thead>
+</table>
+
+</div>
+<h3>How to Use</h3>
+To update the information in <b>USER MODULE</b> add all or any of the following to the URL:<br /><br />
+<i>name=<b>NAME</b><br/>age=<b>AGE</b><br/>nationality=<b>NATIONALITY</b></i><br /><br />
+To add the first parameter simply add a question mark <b>"?"</b> followed by the parameter name, followed by <b>"="</b> and the value. Before any next parameter simply add the <b>"&"</b> charecter.<br /><br />
+<b><a href="/profile?name=john&age=dough&nationality=usa">/profile?name=john&age=dough&nationality=usa</a></b><br /><br />
+
+<h3>Code with predefined default values</h3>
+<div style="border: 1px solid green;padding:15px;font-transform:italic;"><i>
+@views.route("/profile")<br />
+def profile():<br />
+&nbsp&nbsp&nbsp&nbsp	name = "Yorgo"<br />
+&nbsp&nbsp&nbsp&nbsp	age = 40<br />
+&nbsp&nbsp&nbsp&nbsp	nationality = "Bulgaria"<br />
+&nbsp&nbsp&nbsp&nbsp	args = request.args<br />
+&nbsp&nbsp&nbsp&nbsp	if args.get('name'):<br />
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp	 	name = args.get('name')<br />
+&nbsp&nbsp&nbsp&nbsp	if args.get('age'):<br />
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp		age =  args.get('age')<br />
+&nbsp&nbsp&nbsp&nbsp	if args.get('nationality'):<br />
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp		nationality =  args.get('nationality') <br />
+&nbsp&nbsp&nbsp&nbsp	return render_template("profile.html", name=name, age=age, nationality=nationality)<br /></i>
+</div>
+
+<h3>Code without predefined default values</h3>
+<div style="border: 1px solid gray;padding:15px;"><i>
+
+@views.route("/profile")<br />
+def profile():<br />
+&nbsp&nbsp&nbsp&nbspargs = request.args<br />
+&nbsp&nbsp&nbsp&nbspname = args.get('name')<br />
+&nbsp&nbsp&nbsp&nbspage = args.get('age')<br />
+&nbsp&nbsp&nbsp&nbspnationality = args.get('nationality')<br />
+&nbsp&nbsp&nbsp&nbspreturn return render_template("profile.html", name=name, age=age, nationality=nationality)<br /></i>
+<br /></div><br />
+
 {% endblock %}

@@ -1,7 +1,7 @@
 The idea of this project is to create a website using the Flask Framework 
 as fast as possible. The project was started @Jan 16, 8:44 and ended at 11:40
 
-UPDATE: I spent a few more hours to add navigation and some real personal content
+<b>UPDATE</b>: I spent a few more hours to add navigation and some content
 
 The result is published as life website on the following URL:
 
@@ -21,8 +21,7 @@ def profile(username):
 	return render_template("index.html", name=username)
 ```
 
-
-###Next I will show you how to # Pass query from URL using request from FLASK
+###Next I will show you how to # Pass query parameters from URL using the <i>request</i> library from FLASK
 ```
 @views.route("/profile")
 def profile():
@@ -45,8 +44,6 @@ def go_to_home():
 	return redirect(url_for("views.home"))
 ```
 
-
-
 ###In order to add JavaScript navigate to your HTML template file use the following command
 ```
 <script type="text/javascript" src="{{ url_for('static', filename='index.js')}}"></script>
@@ -64,6 +61,14 @@ and element we want to update. In this case we will update the H1 tag:
 
 II. Setup of the environment in my hosting account through CPanel. 
 
-- Install the app
-- Configure a subdomain on the CPanal in through cloudflare
-- Install Flask 
+- Configure a subdomain on the CPanel
+
+- Setup ftp user and upload the script
+
+- Setup DNS records for the subdomain in cloudflare
+
+- Install and configure python app in CPanel
+	- Import requirements
+	- Install PIP Flask
+
+INSPIRED BY: TIM https://www.youtube.com/watch?v=kng-mJJby8g&list=RDCMUC4JX40jDee_tINbkjycV4Sg&index=2

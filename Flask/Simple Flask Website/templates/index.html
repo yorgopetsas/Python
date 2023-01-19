@@ -4,15 +4,71 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>HTML 5 Boilerplate</title>
-<!--     <link rel="stylesheet" href="style.css"> -->
-  </head>
-  <body>
-  	<div>
+    <title>Simple Flask Website</title>
+<style>
+body {margin: 0;}
+
+ul.topnav4 {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+  font-size:16px;
+}
+
+ul.topnav4 li {float: left;  font-size:16px;}
+
+ul.topnav4 li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size:16px;
+}
+
+ul.topnav4 li a:hover:not(.active) {background-color: #111;font-size:16px;}
+
+ul.topnav4 li a.active {background-color: #04AA6D;font-size:16px;}
+
+ul.topnav4 li.right {float: right;font-size:16px;}
+
+@media screen and (max-width: 900px) {
+  ul.topnav4 li.right, 
+  ul.topnav4 li {float: none;font-size:16px;}
+}
+</style>
+</head>
+ <body>
+  <ul class="topnav4">
+  <li><a href="/">Home</a></li>  
+  <li><a href="/profile">Profile</a></li>
+  <li><a href="/linkedin">LinkedIn</a></li>
+  <li><a href="/cv">CV</a></li>
+  <li><a href="/go-to-home">Go To Home</a></li>
+  <li><a href="/json">JSON</a></li>
+  </ul> 
+<!--    <a href="{{ url_for('static', filename='REAMDE.md') }}">aaa</a> -->
+  	<div style="padding-left: 20px;width: 75%;float:left;text-align:left;">
   		{% block content %}
-  		<h1>Hello, my name is {{name}}</h1>
-  		</div>
-  		{% endblock %}
+  		<h2>Hello, my name is {{name}} and the goal of this project is to show you how flexible and easy to use the Flask Framework is.</h2>
+  		<p>The idea is to create a website using Flask as fast as possible. The project was started @Jan 16, 8:44 and ended at 11:40</p>
+		<p><b>UPDATE</b>: I spent 2 additional hours making the documentation, adding navigation and content.</p>
+  		<p>On each page of this site I have tried to represent different functionalities and short explanation on how to set them up in Flask</p>
+  		<p>1. <b>Home</b>: Here we setup a basic template with navigation after creating the app, import the following libraries Blueprint, render_template, request, jsonify, redirect, url_for and setup the @views</p>
+ 		<p>2. <b>Profile</b>: On this page you can see how we can pass parameter queries thought the URL and Flask will dinamically use them to filter and display data.<p>
+ 		<p>3. <b>LinkedIn</b>: This page inherits some of features of the main template used in the home page but we use the <br/><b><i>{ % block content %}</i></b> and <b><i>{ % endblock %}</i></b> tags to overwrite the content block while leaving everything else untouched. Additionally you can see an alternative way to embbed some of my IT related posts in my LinkedIn profile.<p>
+
+  		<p>4. <b>CV</b>: On this page I have embedded my CV through iframe HTML tag.<p>
+ 		<p>5. <b>Go To Home</b>: Redirects are important part of any big and dynamic website, here you can see some basic redirections with Flask.<br /><br />&nbsp&nbsp&nbsp&nbsp<i>@views.route("/go-to-home")</i>
+<br />&nbsp&nbsp&nbsp&nbsp<i>def go_to_home():</i>
+	<br />&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<i>return redirect(url_for("views.home"))</i><br />
+<p>		
+ 		<p>6. <b>JSON</b>: This page will show the posibility to convert dictionary to JSON data and display it.<p>
+ 		<p>* My next Flask and Django projects will include much more: Authentication, DataBase, API, User Management, Bootstrap, Shopping Carts and more.<br /><br />You can see them on <a href="https://github.com/yorgopetsas" target="_blank" >my GitHub @Yorgo Petsas</a><p>
+  	</div>
+  	{% endblock %}
 
 	<script type="text/javascript" src="{{ url_for('static', filename='index.js')}}"></script>
   </body>
