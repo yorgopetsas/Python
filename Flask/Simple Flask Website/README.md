@@ -1,8 +1,8 @@
 <h1>Simple Flask Website</h1>
 The idea of this project is to create a website using Flask as fast as possible. 
 The project was started @Jan 16, 8:44 and ended at 11:40
-
-<b>UPDATE</b>: UPDATE: I spent 2 additional hours making the documentation, adding navigation and content.
+<br /><br />
+<b>UPDATE</b>: I spent 2 additional hours making the documentation, adding navigation and content.
 
 The result is published as life website on the following URL:
 
