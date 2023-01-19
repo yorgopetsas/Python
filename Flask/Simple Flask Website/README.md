@@ -5,9 +5,9 @@ The project was started @Jan 16, 8:44 and ended at 11:40
 <b>UPDATE</b>: I spent 2 additional hours making the documentation, adding navigation and content.
 <br />
 The result is published as life website on the following URL:
-
+<br />
 https://cv.amanitasolutions.com
-
+<br />
 <h2>It consist of the following stages:</h2>
 
 I. Website Creation and Setup with Flask
