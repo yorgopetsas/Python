@@ -4,7 +4,7 @@ The project was started @Jan 16, 8:44 and ended at 11:40
 <br /><br />
 <b>UPDATE</b>: I spent 2 additional hours making the documentation, adding navigation and content.
 <br />
-The result is published as life website on the following URL:
+<h2>The result is published as life website on the following URL:</h2>
 <br />
 https://cv.amanitasolutions.com
 <br />
