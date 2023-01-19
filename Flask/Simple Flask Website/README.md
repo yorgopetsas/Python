@@ -3,7 +3,7 @@ The idea of this project is to create a website using Flask as fast as possible.
 The project was started @Jan 16, 8:44 and ended at 11:40
 <br /><br />
 <b>UPDATE</b>: I spent 2 additional hours making the documentation, adding navigation and content.
-
+<br />
 The result is published as life website on the following URL:
 
 https://cv.amanitasolutions.com
@@ -84,9 +84,9 @@ Additionally you can see an alternative way to embbed some of my IT related post
 6. <b>JSON</b>: This page will show the posibility to convert dictionary to JSON data and display it. You need to use the <i>jsonify</i> library which will convert a dictionary to JSON. Views.py setup below:
 
 ```
-	@views.route("/json")
-	def get_json(): 
-		return jsonify({'1_' : 'DESCRIPTION: This page will show how to convert dictionary to JSON data.', '2_' : '-', '3_' : 'DETAILS: The configuration is done in the views system of Flask were we need to import the  _jsonify_ library. Then we define a route and a get_json function.', '4_': '-', '5_': 'MORE DETAILS: The data is sent as dictionary, converted and dinamically visualized with a URL rule in the views.py file.', '6_' : '', '7_' : 'EXAMPLE:','_1' : '      @views.route("/json")', '_2' : '          def get_json():', '_3' : '          return jsonify(JSON_DICTIONARY)','_4':'', '_ZX' : '<BACK>  PLEASE HIT THE BACK BUTTON OF YOUR BROWSER SO YOU CAN GO BACK TO THE WEBSITE  <BACK>'})
+    @views.route("/json")
+    def get_json(): 
+        return jsonify({'1_' : 'DESCRIPTION: This page will show how to convert dictionary to JSON data.', '2_' : '-', '3_' : 'DETAILS: The configuration is done in the views system of Flask were we need to import the  _jsonify_ library. Then we define a route and a get_json function.', '4_': '-', '5_': 'MORE DETAILS: The data is sent as dictionary, converted and dinamically visualized with a URL rule in the views.py file.', '6_' : '', '7_' : 'EXAMPLE:','_1' : '      @views.route("/json")', '_2' : '          def get_json():', '_3' : '          return jsonify(JSON_DICTIONARY)','_4':'', '_ZX' : '<BACK>  PLEASE HIT THE BACK BUTTON OF YOUR BROWSER SO YOU CAN GO BACK TO THE WEBSITE  <BACK>'})
 
 ```
 
