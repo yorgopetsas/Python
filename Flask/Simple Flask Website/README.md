@@ -1,62 +1,89 @@
-The idea of this project is to create a website using the Flask Framework 
-as fast as possible. The project was started @Jan 16, 8:44 and ended at 11:40
+The idea of this project is to create a website using Flask as fast as possible. 
+The project was started @Jan 16, 8:44 and ended at 11:40
 
-<b>UPDATE</b>: I spent a few more hours to add navigation and some content
+<b>UPDATE</b>: UPDATE: I spent 2 additional hours making the documentation, adding navigation and content.
 
 The result is published as life website on the following URL:
 
 https://cv.amanitasolutions.com
 
-##It consist of the following stages:
+<h2>It consist of the following stages:</h2>
 
 I. Website Creation and Setup with Flask
 
-###I will share some of the knowledge I gain while doing this project 
+II. Views.py: Setup of the URL rules the templates and the content. 
+
+On each page of this site I have tried to represent different functionalities and short explanation on how to set them up in Flask
+
+1. Home: Here we setup a basic template with navigation after creating the app, import the following libraries <i>Blueprint</i>, <i>render_template</i>, <i>request</i>, <i>jsonify</i>, <i>redirect</i>, <i>url_for</i> and setup the @views
+
+2. Profile: On this page you can see how we can pass parameter queries thought the URL, using the <i>request</i> library which will dinamically use them to filter and display data. To do the test you simply need to simply add a question mark "?" followed by the parameter name, followed by "=" and the value. Before any next parameter simply add the "&" charecter.
+
+using the <i>request</i> library from FLASK</h3>
 
 ```
-# Below you can see how you can take a paramenter from the URL
-# putting it in triangle brackets <> and passing it to a function
-@views.route("/profile/<username>")
-def profile(username):
-	return render_template("index.html", name=username)
+Parameters:
+name=NAME
+age=AGE
+nationality=NATIONALITY
+Example:
+/profile?name=john&age=dough&nationality=usa
+
 ```
 
-###Next I will show you how to # Pass query parameters from URL using the <i>request</i> library from FLASK
+The setup in views.py with predefined default values is as follows:
+
 ```
 @views.route("/profile")
 def profile():
-	args = request.args
-	name = args.get('name')
-	return render_template("index.html", name=name)
-```
-	
-###Return JSON. Use jsonify will convert a dictionary to JSON
-```
-@views.route("/json")
-def get_json():
-	return jsonify({'name': 'yorgo', 'age', 24})  
-```
-
-###How to Redirect: Import redirect and url_for and use the below logic
-```
-@views.route("/go-to-home")
-def go_to_home():
-	return redirect(url_for("views.home"))
+     name = "Yorgo"
+     age = 40
+     nationality = "Bulgaria"
+     args = request.args
+     if args.get('name'):
+         name = args.get('name')
+     if args.get('age'):
+         age = args.get('age')
+     if args.get('nationality'):
+         nationality = args.get('nationality')
+     return render_template("profile.html", name=name, age=age, nationality=nationality)
 ```
 
-###In order to add JavaScript navigate to your HTML template file use the following command
-```
-<script type="text/javascript" src="{{ url_for('static', filename='index.js')}}"></script>
-```
+3. LinkedIn: This page we show you how we inherit the template used in the home page, we overwrite the content block while leaving everything else untouched. Flask uses the Jijna to manage templates and the way to configure it to start the new templates with the following tag:
 
-Template Inheritance: Flask uses the Jijna to manage templates. in profile.html we inherite 
-the template from index.html through the tag "{% extends "index.html" %}" followed by the block 
-and element we want to update. In this case we will update the H1 tag:
+
 ```
 {% extends "index.html" %}
+```
+
+And we then add the things we want to overwrite. In the example below we update the the H1 tag:
+
+```
 {% block content %}
 <h1>This is the profile page</h1>
 {% endblock %}
+
+```
+
+Additionally you can see an alternative way to embbed some of my IT related posts in my LinkedIn profile. 
+
+4. CV: On this page I have embedded my CV through <i>iframe</i> HTML tag.
+
+5. Go To Home: Redirects are important part of any big and dynamic website, here you can see some basic redirections with Flask. We use the <i>redirect</i> and <i>url_for</i> libraries and set it up as follows:
+
+```
+    @views.route("/go-to-home")
+    def go_to_home():
+        return redirect(url_for("views.home"))
+```
+
+6. JSON: This page will show the posibility to convert dictionary to JSON data and display it. You need to use the <i>jsonify</i> library which will convert a dictionary to JSON. Views.py setup below:
+
+```
+@views.route("/json")
+def get_json(): 
+	return jsonify({'1_' : 'DESCRIPTION: This page will show how to convert dictionary to JSON data.', '2_' : '-', '3_' : 'DETAILS: The configuration is done in the views system of Flask were we need to import the  _jsonify_ library. Then we define a route and a get_json function.', '4_': '-', '5_': 'MORE DETAILS: The data is sent as dictionary, converted and dinamically visualized with a URL rule in the views.py file.', '6_' : '', '7_' : 'EXAMPLE:','_1' : '      @views.route("/json")', '_2' : '          def get_json():', '_3' : '          return jsonify(JSON_DICTIONARY)','_4':'', '_ZX' : '<BACK>  PLEASE HIT THE BACK BUTTON OF YOUR BROWSER SO YOU CAN GO BACK TO THE WEBSITE  <BACK>'})
+
 ```
 
 II. Setup of the environment in my hosting account through CPanel. 
@@ -71,4 +98,7 @@ II. Setup of the environment in my hosting account through CPanel.
 	- Import requirements
 	- Install PIP Flask
 
-INSPIRED BY: TIM https://www.youtube.com/watch?v=kng-mJJby8g&list=RDCMUC4JX40jDee_tINbkjycV4Sg&index=2
+INSPIRED BY: TIM from Tech with Tim:<br />
+https://www.youtube.com/watch?v=kng-mJJby8g&list=RDCMUC4JX40jDee_tINbkjycV4Sg&index=2
+
+
