@@ -149,7 +149,7 @@ def main():
 	FPS = 60
 	
 	level = 0
-	lives = 5
+	lives = 1
 	
 	main_font = pygame.font.SysFont("comicsans", 40)
 	lost_font = pygame.font.SysFont("comicsans", 60)
@@ -191,19 +191,27 @@ def main():
 	while run:
 		clock.tick(FPS)
 		redraw_window()
-		
+
 		if player.health <= 0:
+			if lives <= 1:
+				lost = True
+				# I think we use this if we use the bellow if lost stament which is 
+				# not relevant now but need to see the tutorial again to figure out why was it done
+				# lost_count += 1
+				lost_label = lost_font.render("You Lost!!", 1, (255, 255, 255))
+				WIN.blit(lost_label, (WIDTH / 2 - lost_label.get_width()/2, 350))
+				pygame.display.update()	
+				time.sleep(3)
+				main_menu()
 			lives -= 1
 			player.health = 100
-			if lives <= 0:
-				lost = True
-				lost_count += 1
 
-		if lost:
-			if lost_count > FPS * 3:
-				run = False
-			else:
-				continue
+# Same as comment above, check why was it done this way as the updated way works just fine
+# 		if lost:
+# 			if lost_count > 3 * FPS:
+# 				run = False
+# 			else:
+# 				continue
 
 		if len(enemies) == 0:	
 			if level != 0:
@@ -250,7 +258,8 @@ def main():
 				player.health -= 10
 				enemies.remove(enemy)
 			elif enemy.y + enemy.get_height() > HEIGHT:
-				lives -= 1
+				# Made to love 10% blood instead of one life when enemy passes the whole screen
+				player.health -= 10
 				enemies.remove(enemy)
 
 		player.move_lasers(-laser_vel, enemies)
