@@ -53,8 +53,8 @@ api.add_resource(HelloWorld, "/helloworld")
 ```
 
 4. Specify parameters for the requests. Register the class as a resource. "/helloworld" is the endpoint. 
-By the triangle bracets we can define  parameters. Examples: <i>string, int, boolean<i>. 
-We can have multiple parameters separating them with  forward slash "/". Important: When making the call have 
+By the triangle bracets we can define  parameters. Examples: <i>string, int, boolean</i>. 
+We can have multiple parameters separating them with  forward slash "/". <b>Important</b>: When making the call have 
 to follow the order of the parameters.
 ```
 api.add_resource(HelloWorld, "/helloworld/<string:name>/<int:test>")
