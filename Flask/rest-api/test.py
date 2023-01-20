@@ -5,6 +5,6 @@ import requests
 BASE = "http://127.0.0.1:5000/"
 
 # Send get request to the helloworld endpoint
-response = requests.post(BASE + "helloworld")
+response = requests.get(BASE + "helloworld/tim/19")
 
 print(response.json())
