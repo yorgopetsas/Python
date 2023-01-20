@@ -16,12 +16,12 @@
 
 Start of file
 ```
-app = Flask(__name__)<br />
+app = Flask(__name__)
 api = Api(app)
 ```
 End of file:
 ```
-if __name__ == "__main__":<br />
+if __name__ == "__main__":
 	app.run(debug=True)
 ```
 
@@ -30,15 +30,15 @@ if __name__ == "__main__":<br />
  * Serving Flask app "main" (lazy loading)
  * Environment: production
    WARNING: This is a development server. Do not use it in a production deployment.
-   Use a production WSGI server instead.
+     Use a production WSGI server instead.
  * Debug mode: on
  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
  * Restarting with stat
  * Debugger is active!
  * Debugger PIN: 170-895-724
 </i>
-- The important part is see the confirmation that the service is running. In this case it is on port 500
-of the <b>IP:</b><i>127.0.0.1</i> (localhost). You can later update those settings. 
+<br /><br />- The important part is see the confirmation that the service is running. In this case it is on 
+port 5000 of the <b>IP:</b><i>127.0.0.1</i> (localhost). You can later update those settings. <br />
 
 - Creating a Resource Class. 
 
@@ -52,12 +52,13 @@ of the <b>IP:</b><i>127.0.0.1</i> (localhost). You can later update those settin
 api.add_resource(HelloWorld, "/helloworld")
 ```
 
-4. Specify parameters for the requests. Register the class as a resource. "/helloworld" is the endpoint. By the triangle bracets we can define 
-# parameters. Examples: <i>string, int, boolean<i>. We can have multiple parameters separating them with 
-# forward slash "/". Important: When making the call have to follow the order of the parameters.
+4. Specify parameters for the requests. Register the class as a resource. "/helloworld" is the endpoint. 
+By the triangle bracets we can define  parameters. Examples: <i>string, int, boolean<i>. 
+We can have multiple parameters separating them with  forward slash "/". Important: When making the call have 
+to follow the order of the parameters.
 ```
 api.add_resource(HelloWorld, "/helloworld/<string:name>/<int:test>")
 ```
 
-INSPIRED BY: TIM from Tech with TIM:
+<b>INSPIRED BY</b>: TIM from Tech with TIM:
 https://www.youtube.com/watch?v=GMppyAPbLYk&list=RDCMUC4JX40jDee_tINbkjycV4Sg&index=6
