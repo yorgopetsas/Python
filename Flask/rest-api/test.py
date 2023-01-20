@@ -3,7 +3,7 @@ import requests
 # Set the base URL
 BASE = "http://127.0.0.1:5000/"
 
-# FILL DB / Create Items.
+# FILL DB / CREATE ITEM
 # We use this snippet in order to upload this data into the DB part 1
 # data = [
 # 		{"likes": 10, "name" : "Tim", "views" : 100000}, 
@@ -15,10 +15,10 @@ BASE = "http://127.0.0.1:5000/"
 # 	print(response.json())
 # FILL DB END
 
-# Delete Item
+# DELETE ITEM
 # resposnse = requests.delete(BASE + 'video/0')
 # print(response)
 
-# Update Item. In this case we only update one argument: "likes".
+# UPDATE ITEM. In this case we only update one argument: "likes".
 response = requests.patch(BASE + "video/2", {"likes" : 101})
 print(response.json())
