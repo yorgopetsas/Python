@@ -61,6 +61,24 @@ api.add_resource(HelloWorld, "/helloworld/<string:name>/<int:test>")
 ```
 UN-ORDERED:
 
+Create DB: IMPORTANT: Uncomment the line bellow the first time you run the program in order to create the DATABASE.  After that you have to comment it out or the app will overwrite your datebase with new a one each run. 
+
+```
+db.create_all()
+```
+
+Step X Define DB model. In String(100) we define the max size of the field. "nullable=False" Means can't be empty.
+
+STEP X Define structure
+ Resource field is a way to define how a object should be serialized. Meaning the result will be formated 
+ according to the provided structure. In this case JSON dictionary. Requiers the import of "fields"
+
+Marshal Decorator: Import "marshal_with". Take the return value serialize it according to the data structure provided in resource_fields (JSON)
+NOTES: 
+- Status codes: 201 codes stands for "created"	, 204 "deleted sussecfully", 409 "Item Already Exists"
+
+- Once something is already in the db we don't need to add it, rather just commit it. That is why here we don't use "db.session.add(result)"
+
 
 # We are going to create an program that will return to us information about a video, when we sent the video ID
 # On a second phase I will rewrite this so it works for my ecommerce website where I will ask for information 
@@ -104,6 +122,39 @@ UN-ORDERED:
 		#return videos[video_id] 
 
 # PROGRESS # https://www.youtube.com/watch?v=GMppyAPbLYk&list=RDCMUC4JX40jDee_tINbkjycV4Sg&index=6
+
+# FILL DB
+# We use this snippet in order to upload this data into the DB part 1
+```
+
+data = [
+ 		{"likes": 10, "name" : "Tim", "views" : 100000}, 
+ 		{"likes": 20, "name" : "Jim", "views" : 200000}, 
+ 		{"likes": 30, "name" : "Bim", "views" : 300000}]
+
+ for i in range(len(data)):
+ 	response = requests.put(BASE + "video/" + str(i), data[i])
+ 	print(response.json())
+```
+
+# FILL DB END
+
+Create DataBase
+# IMPORTANT: Uncomment the line bellow the first time you run the program in order to create the DATABASE. 
+# After that you have to comment it out or the app will overwrite your datebase with new a one each run. 
+
+
+
+# Send get request to the helloworld endpoint
+# We are passing arguments data  
+# response2 = requests.put(BASE + "video/2", {"likes": 10, "name" : "Jim", "views" : 100000})
+
+
+# Send get request to the helloworld endpoint
+# We are passing arguments data  
+# response2 = requests.put(BASE + "video/2", {"likes": 10, "name" : "Jim", "views" : 100000})
+
+
 
 
 <b>INSPIRED BY</b>: TIM from Tech with TIM:
