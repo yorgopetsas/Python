@@ -15,18 +15,18 @@
 2. Initiate an app inside of an Api:
 
 Start of file
-
-app = Flask(__name__)
+```
+app = Flask(__name__)<br />
 api = Api(app)
-
+```
 End of file:
-
-if __name__ == "__main__":
+```
+if __name__ == "__main__":<br />
 	app.run(debug=True)
+```
 
-3. Make sure the setup is correct by running the empty app from your terminal.
-We get the following confirmation:
-
+3. Make sure the setup is correct by running the empty app from your terminal. You should get something like: 
+<i>
  * Serving Flask app "main" (lazy loading)
  * Environment: production
    WARNING: This is a development server. Do not use it in a production deployment.
@@ -36,13 +36,13 @@ We get the following confirmation:
  * Restarting with stat
  * Debugger is active!
  * Debugger PIN: 170-895-724
-
+</i>
 - The important part is see the confirmation that the service is running. In this case it is on port 500
 of the <b>IP:</b><i>127.0.0.1</i> (localhost). You can later update those settings. 
 
-- Creating a Resource class that we will use for handling get, post, delete requests.
+- Creating a Resource Class. 
 
-- Next step we overwrite the get and post request 
+- Use it to overwrite the get and post requests get, post (delete) requests.
 
 - Create test.py and test.
 
@@ -50,6 +50,13 @@ of the <b>IP:</b><i>127.0.0.1</i> (localhost). You can later update those settin
 
 ```
 api.add_resource(HelloWorld, "/helloworld")
+```
+
+4. Specify parameters for the requests. Register the class as a resource. "/helloworld" is the endpoint. By the triangle bracets we can define 
+# parameters. Examples: <i>string, int, boolean<i>. We can have multiple parameters separating them with 
+# forward slash "/". Important: When making the call have to follow the order of the parameters.
+```
+api.add_resource(HelloWorld, "/helloworld/<string:name>/<int:test>")
 ```
 
 INSPIRED BY: TIM from Tech with TIM:
