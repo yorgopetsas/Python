@@ -40,3 +40,17 @@ We get the following confirmation:
 - The important part is see the confirmation that the service is running. In this case it is on port 500
 of the <b>IP:</b><i>127.0.0.1</i> (localhost). You can later update those settings. 
 
+- Creating a Resource class that we will use for handling get, post, delete requests.
+
+- Next step we overwrite the get and post request 
+
+- Create test.py and test.
+
+- Register the class as a resource. "/helloworld" is the endpoint
+
+```
+api.add_resource(HelloWorld, "/helloworld")
+```
+
+INSPIRED BY: TIM from Tech with TIM:
+https://www.youtube.com/watch?v=GMppyAPbLYk&list=RDCMUC4JX40jDee_tINbkjycV4Sg&index=6
