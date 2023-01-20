@@ -6,10 +6,9 @@ app = Flask(__name__)
 api = Api(app)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///db/database.db'
 
-# We define the datebase just the first time we run the app in an enviroment, after that we comment it out
 db = SQLAlchemy(app)
 
-# Define model for DB. In String(100) we define the max size. nullable=False Means can't be empy
+# Define DB model. In String(100) we define the max size of the field. "nullable=False" Means can't be empty.
 class VideoModel(db.Model):
 	id = db.Column(db.Integer, primary_key=True)
 	name = db.Column(db.String(100), nullable=False)
@@ -23,23 +22,20 @@ class VideoModel(db.Model):
 # After that you have to comment it out or the app will overwrite your datebase with new a one each run. 
 # db.create_all()
 
-# We create a parser with 3 mandatory arguments
+# We create an Argument creation parser with 3 mandatory fields.
 video_put_args = reqparse.RequestParser()
 video_put_args.add_argument("name", type=str, help="Name of the video", required=True)
 video_put_args.add_argument("views", type=str, help="Views of the video", required=True)
 video_put_args.add_argument("likes", type=str, help="Likes on the video", required=True)
 
-# Update argument parser
+# We create an Argument Update parser with 0 mandatory fields.
 video_update_args = reqparse.RequestParser()
 video_update_args.add_argument("name", type=str, help="Name of the video")
 video_update_args.add_argument("views", type=str, help="Views of the video")
 video_update_args.add_argument("likes", type=str, help="Likes on the video")
 
-
-# Removed since we start to store in DB
-# videos = {}
-
-# Resource field is a way to define how a object should be seriolized. Need to import "fields"
+# Resource field is a way to define how a object should be serialized. Meaning the result will be formated 
+# according to the provided structure. In this case JSON dictionary. Requiers the import of "fields"
 resource_fields = {
 	'id': fields.Integer,
 	'name': fields.String,
@@ -48,7 +44,8 @@ resource_fields = {
 }
 
 class Video(Resource):
-	# Marshal decorator. Import "marshal_with". When we return take the return value and serialize it using the fields from resource_fields to json
+	# Marshal decorator. Import "marshal_with". Take the return value serialize it according to the data 
+	# structure provided in resource_fields (JSON)
 	@marshal_with(resource_fields)
 	def get(self, video_id):
 		result = VideoModel.query.filter_by(id=video_id).first()
@@ -97,59 +94,3 @@ api.add_resource(Video, "/video/<int:video_id>")
 
 if __name__ == "__main__":
 	app.run(debug=True)
-
-# PROGRESS # https://www.youtube.com/watch?v=GMppyAPbLYk&list=RDCMUC4JX40jDee_tINbkjycV4Sg&index=6
-#
-# We are going to create an program that will return to us information about a video, when we sent the video ID
-# On a second phase I will rewrite this so it works for my ecommerce website where I will ask for information 
-# regarding the product based on product ID. I will then combine it will
-# ARGUMENTS
-
-# the help arguments is like an error that will be displaied to the user/sender
-
-# 		return request.form['likes']
-
-#		request.method # this will tell us that it is put request
-# 		self.likes
-# 		self.name
-# 		self.id
-
-# NOTE
-#Thanks Tim for the great video.
-#At minute 30:59, if anyone else gets the following error: "{'message': 'Failed to decode JSON object: Expecting value: line 1 column 1 (char 0)'}" to fix it you need to add: location='form' to the line of code: "parser.add_argument('likes', type=int, help='likes of the video')" to tell the request parser to look only in the post body for the data that PUT request needs to parse.
-
-# Instead of using the request library we will use a library called reqparse which is much better for this app
-
-# Creating a Resource Class. Use it to overwrite the get and post requests get, post (delete) requests.
-# class HelloWorld(Resource):
-# 	def get(self, name):
-# 		return names[name]
-
-# 	def post(self):
-# 		return{"data" : "Post"}
-
-# names = {"tim": {"age": 19, "gender": "male"},
-# 		"bill": {"age": 27, "gender": "male"}}
-
-
-# Register the class as a resource. "/helloworld" is the endpoint. By the triangle bracets we can define 
-# parameters. Examples: <i>string, int, boolean<i>. We can have multiple parameters separating them with 
-# forward slash "/". Important: When making the call have to follow the order of the parameters.
-# api.add_resource(HelloWorld, "/helloworld/<string:name>")
-
-#Abort if we try to locate an item that does not exist. We need to add the abort module to the import line
-# def	abort_vid_missing(video_id):
-# 	if video_id not in videos:
-# 		abort(404, message="Video ID missing or not valid")
-# 
-# def abort_if_vid_exists(video_id):
-# 	if video_id in videos:
-# 		abort(409, "Video Already exists!")
-
-# 		return videos[video_id], 201
-# 		abort_if_vid_exists(video_id)
-# 		args = video_put_args.parse_args()
-# 		videos[video_id] = args
-
-		#abort_vid_missing(video_id)
-		#return videos[video_id] 
