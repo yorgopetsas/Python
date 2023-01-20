@@ -8,7 +8,7 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///db/database.db'
 
 db = SQLAlchemy(app)
 
-# Define DB model. In String(100) we define the max size of the field. "nullable=False" Means can't be empty.
+# Define DB model.
 class VideoModel(db.Model):
 	id = db.Column(db.Integer, primary_key=True)
 	name = db.Column(db.String(100), nullable=False)
@@ -18,8 +18,7 @@ class VideoModel(db.Model):
 	def __repr__(self):
 		return f"Video(name = {name}, views = {views}, likes = {likes}])"
 
-# IMPORTANT: Uncomment the line bellow the first time you run the program in order to create the DATABASE. 
-# After that you have to comment it out or the app will overwrite your datebase with new a one each run. 
+# IMPORTANT: Uncomment only for the first run !
 # db.create_all()
 
 # We create an Argument creation parser with 3 mandatory fields.
@@ -34,8 +33,7 @@ video_update_args.add_argument("name", type=str, help="Name of the video")
 video_update_args.add_argument("views", type=str, help="Views of the video")
 video_update_args.add_argument("likes", type=str, help="Likes on the video")
 
-# Resource field is a way to define how a object should be serialized. Meaning the result will be formated 
-# according to the provided structure. In this case JSON dictionary. Requiers the import of "fields"
+# Define structure
 resource_fields = {
 	'id': fields.Integer,
 	'name': fields.String,
@@ -44,8 +42,7 @@ resource_fields = {
 }
 
 class Video(Resource):
-	# Marshal decorator. Import "marshal_with". Take the return value serialize it according to the data 
-	# structure provided in resource_fields (JSON)
+	# Marshal decorator.
 	@marshal_with(resource_fields)
 	def get(self, video_id):
 		result = VideoModel.query.filter_by(id=video_id).first()
@@ -53,7 +50,6 @@ class Video(Resource):
 			abort(404, message="Video with this ID does not exist.")
 		return result
 
-	#201 codes stands for "created"	, 204 "deleted sussecfully", 409 "Item Already Exists"
 	@marshal_with(resource_fields)
 	def put(self, video_id):
 		args = video_put_args.parse_args()
@@ -79,8 +75,6 @@ class Video(Resource):
 		if args['likes']:
 			result.likes = args['likes']
 
-		# Once something is already in the db we don't need to add it, rather just commit it
-		# That is why here we don't use "db.session.add(result)"
 		db.session.commit()
 		
 		return result
