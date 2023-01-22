@@ -99,12 +99,14 @@ def index(request):
 <br />
 Static Files (js, img, etc)<br />
 
-- Createa static directory and them directory called website because this is the name of our app
+- Createa static directory and them directory called website because this is the name of our app.
 <br />
 To use a static file in your HTML code you need to add the following snippet in the head of your template file:
+
 ```
 {% load static %}
 ```
+
 <br />
 And then use the following sintax when you need to use the file
 ```
