@@ -109,9 +109,13 @@ To use a static file in your HTML code you need to add the following snippet in 
 
 <br />
 And then use the following sintax when you need to use the file
+
 ```
 {%  static 'website/style.css' %}
+```
+
 Example:
+```
 link rel="stylesheet" type="text/css" href="{% static 'website/style.css' %}"
 ```
 
