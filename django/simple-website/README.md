@@ -49,11 +49,13 @@ http://localhost:8000/
 Setup SuperUser<br />
 - Gogo to the terminal and press CTRL-C in order to stop the server
 - Do a migration
+
 ```
 python3 manage.py migrate
 ```
+
 - Create a SuperUser running the command below and follow the proccess.
-````
+```
 python3 manage.py createsuperuser
 ```
 
