@@ -1,7 +1,5 @@
 In this project we are creating an API that will manage the books for a small book shop.
 
-INSPIRED BY: https://www.youtube.com/watch?v=mlr9BF4JomE CURRENT TIME 20:24
-
 The result of this work can be tested live on the following link
 
 http://django-rest-api.amanitasolutions.com/
@@ -54,10 +52,11 @@ automated API calls and not do manual one by one calls.
  - Simply navigate to the book you want to delete and click on the DELETE button at the top right corner. Of
  course you can also send this request with code
 
-
 - OTHERS:
 
-How has this REST API build?
+<h2>How has this REST API build?<h2>
+
+- I developed the application on a hosting with CPanel. Because this is educational project which most people would do on a personal computer I I haven't provided some of the setup steps like: configuring the Python Application, the Virtual Environment, reseting them from time to time to have some URL and database changes taka effect. In case you are trying to use this as a tutorial do not hesitate to drop me a line if you need help.
 
 - After creating the virtual environment (we have selected to work with Python 3.8), we are going to intsall Django
 ```
@@ -346,3 +345,4 @@ If we can't fetch a specific book we get a general error, so we can use a try/ex
 
 - From this point out our application is fully funcioning and we are only going to improve, optimize the code and make it cleaner. 
 
+INSPIRED BY: https://www.youtube.com/watch?v=mlr9BF4JomE
