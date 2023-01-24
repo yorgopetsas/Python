@@ -54,7 +54,7 @@ automated API calls and not do manual one by one calls.
 
 - OTHERS:
 
-<h2>How has this REST API build?<h2>
+<h2>How has this REST API build?</h2>
 
 - I developed the application on a hosting with CPanel. Because this is educational project which most people would do on a personal computer I I haven't provided some of the setup steps like: configuring the Python Application, the Virtual Environment, reseting them from time to time to have some URL and database changes taka effect. In case you are trying to use this as a tutorial do not hesitate to drop me a line if you need help.
 
