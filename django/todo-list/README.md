@@ -1,12 +1,8 @@
-Custom Forms
-https://www.youtube.com/watch?v=9jDEnSm4nt8&list=PLzMcBGfZo4-kQkZp-j9PNyKq7Yw5VYjq9&index=6
-
 The website create for this project is live on my server. You can check it out at:
 
 http://dtl.amanitasolutions.com/
 
 We want to give the user the option to add an item to the list
-
 
 Custom forms- very powerful, the most important part is to get a hang of the GET POST request
 
@@ -219,4 +215,4 @@ but not the __init__.py files. That goes for all of your <i>migrations</i> folde
 ```
 
 
-
+INSPIRED BY: https://www.youtube.com/watch?v=9jDEnSm4nt8&list=PLzMcBGfZo4-kQkZp-j9PNyKq7Yw5VYjq9&index=6
